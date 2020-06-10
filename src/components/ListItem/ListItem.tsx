@@ -1,12 +1,24 @@
 import * as React from 'react'
-import { ItemWrapper } from './ListItem.styled'
+import {
+  ItemWrapper,
+  ItemText,
+  EditButton,
+  DeleteButton
+} from './ListItem.styled'
 
 type propTypes = {
-  children: React.ReactNode
+  id: number
+  text: string
 }
 
-function ListItem({ children }: propTypes) {
-  return <ItemWrapper>{children}</ItemWrapper>
+function ListItem({ id, text }: propTypes) {
+  return (
+    <ItemWrapper>
+      <ItemText>{text}</ItemText>
+      <EditButton>Edit</EditButton>
+      <DeleteButton>Delete</DeleteButton>
+    </ItemWrapper>
+  )
 }
 
 export default ListItem
