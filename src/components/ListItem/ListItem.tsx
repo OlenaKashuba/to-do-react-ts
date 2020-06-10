@@ -9,14 +9,15 @@ import {
 type propTypes = {
   id: number
   text: string
+  handleDelete: (id: number) => void
 }
 
-function ListItem({ id, text }: propTypes) {
+function ListItem({ id, text, handleDelete }: propTypes) {
   return (
     <ItemWrapper>
       <ItemText>{text}</ItemText>
       <EditButton>Edit</EditButton>
-      <DeleteButton>Delete</DeleteButton>
+      <DeleteButton onClick={() => handleDelete(id)}>Delete</DeleteButton>
     </ItemWrapper>
   )
 }
