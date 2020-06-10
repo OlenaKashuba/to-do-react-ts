@@ -28,11 +28,23 @@ function App() {
     setToDo(todos.filter(todo => todo.id !== id))
   }
 
+  function handleComplete(id: number) {
+    const indexToComplete = todos.findIndex(todo => todo.id === id)
+    const newToDos = [...todos]
+    newToDos[indexToComplete].completed = !todos[indexToComplete].completed
+    setToDo(newToDos)
+  }
+
   function renderTodoItem(todos: todosType) {
     if (todos.length < 1) return
     return todos.map(todo => {
       return (
-        <ListItem id={todo.id} text={todo.text} handleDelete={handleDelete} />
+        <ListItem
+          id={todo.id}
+          text={todo.text}
+          handleDelete={handleDelete}
+          handleComplete={handleComplete}
+        />
       )
     })
   }
